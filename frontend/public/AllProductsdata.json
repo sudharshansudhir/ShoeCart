@@ -1,0 +1,92 @@
+[
+  {
+    "_id": 1, "name": "Classic Black Sneakers", "category": "Casual", "price": 110, "offerPrice": 85, "rating": 4.4, "defaultQuantity": 0, "image": "./shoe-images/shoe1.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 2, "name": "Red & Black Trainers", "category": "Fitness", "price": 135, "offerPrice": 110, "rating": 4.6, "defaultQuantity": 0, "image": "./shoe-images/shoe2.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 3, "name": "Outdoor White Runners", "category": "Running", "price": 125, "offerPrice": 100, "rating": 4.7, "defaultQuantity": 0, "image": "./shoe-images/shoe3.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 4, "name": "Teal Urban Sneaks", "category": "Casual", "price": 95, "offerPrice": 75, "rating": 4.3, "defaultQuantity": 0, "image": "./shoe-images/shoe4.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 5, "name": "Green & Blue Asics", "category": "Running", "price": 140, "offerPrice": 115, "rating": 4.5, "defaultQuantity": 0, "image": "./shoe-images/shoe5.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 6, "name": "White Classic Sneakers", "category": "Everyday", "price": 105, "offerPrice": 80, "rating": 4.2, "defaultQuantity": 0, "image": "./shoe-images/shoe6.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 7, "name": "Gray Running Shoes", "category": "Fitness", "price": 120, "offerPrice": 95, "rating": 4.1, "defaultQuantity": 0, "image": "./shoe-images/shoe7.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 8, "name": "Metallic Urban Walkers", "category": "Casual", "price": 135, "offerPrice": 110, "rating": 4.3, "defaultQuantity": 0, "image": "./shoe-images/shoe8.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 9, "name": "White Fashion Sneakers", "category": "Lifestyle", "price": 130, "offerPrice": 105, "rating": 4.4, "defaultQuantity": 0, "image": "./shoe-images/shoe9.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 10, "name": "Close-Up Red Sneaker", "category": "Fitness", "price": 145, "offerPrice": 120, "rating": 4.6, "defaultQuantity": 0, "image": "./shoe-images/shoe10.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 11, "name": "Kingzone Slides", "category": "Casual", "price": 70, "offerPrice": 60, "rating": 4.0, "defaultQuantity": 0, "image": "./shoe-images/shoe11.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 12, "name": "Trek Move Ultra", "category": "Outdoor", "price": 150, "offerPrice": 125, "rating": 4.2, "defaultQuantity": 0, "image": "./shoe-images/shoe12.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 13, "name": "Shadow Sprint R2", "category": "Fitness", "price": 115, "offerPrice": 90, "rating": 4.6, "defaultQuantity": 0, "image": "./shoe-images/shoe13.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 14, "name": "Gym Beast XT", "category": "Training", "price": 135, "offerPrice": 120, "rating": 4.3, "defaultQuantity": 0, "image": "./shoe-images/shoe14.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 15, "name": "Trekmax Comfort", "category": "Outdoor", "price": 160, "offerPrice": 135, "rating": 4.5, "defaultQuantity": 0, "image": "./shoe-images/shoe15.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 16, "name": "Cosmic Walker", "category": "Casual", "price": 95, "offerPrice": 80, "rating": 4.1, "defaultQuantity": 0, "image": "./shoe-images/shoe1.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 17, "name": "Maxxio Stride Pro", "category": "Formal", "price": 180, "offerPrice": 150, "rating": 3.9, "defaultQuantity": 0, "image": "./shoe-images/shoe2.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 18, "name": "BladeRun VR", "category": "Running", "price": 140, "offerPrice": 115, "rating": 4.4, "defaultQuantity": 0, "image": "./shoe-images/shoe3.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 19, "name": "Nimbus Drift", "category": "Fitness", "price": 125, "offerPrice": 105, "rating": 4.0, "defaultQuantity": 0, "image": "./shoe-images/shoe4.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 20, "name": "SkyRun Turbo", "category": "Training", "price": 145, "offerPrice": 120, "rating": 4.2, "defaultQuantity": 0, "image": "./shoe-images/shoe5.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 21, "name": "Core Walkers", "category": "Everyday", "price": 75, "offerPrice": 60, "rating": 3.8, "defaultQuantity": 0, "image": "./shoe-images/shoe6.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 22, "name": "Pace Pulse LX", "category": "Running", "price": 155, "offerPrice": 130, "rating": 4.7, "defaultQuantity": 0, "image": "./shoe-images/shoe7.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 23, "name": "Stealth Luxe", "category": "Formal", "price": 195, "offerPrice": 160, "rating": 4.2, "defaultQuantity": 0, "image": "./shoe-images/shoe8.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 24, "name": "Urban Stride", "category": "Casual", "price": 100, "offerPrice": 85, "rating": 4.1, "defaultQuantity": 0, "image": "./shoe-images/shoe9.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 25, "name": "Aero Glide Pro", "category": "Fitness", "price": 135, "offerPrice": 110, "rating": 4.5, "defaultQuantity": 0, "image": "./shoe-images/shoe10.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 26, "name": "MetroSlip Daily", "category": "Everyday", "price": 80, "offerPrice": 65, "rating": 4.0, "defaultQuantity": 0, "image": "./shoe-images/shoe11.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 27, "name": "Ranger Boots", "category": "Outdoor", "price": 160, "offerPrice": 135, "rating": 4.4, "defaultQuantity": 0, "image": "./shoe-images/shoe12.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 28, "name": "FlexMove Boost", "category": "Training", "price": 120, "offerPrice": 95, "rating": 4.1, "defaultQuantity": 0, "image": "./shoe-images/shoe13.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 29, "name": "Hydro Comfort", "category": "Casual", "price": 105, "offerPrice": 90, "rating": 4.3, "defaultQuantity": 0, "image": "./shoe-images/shoe14.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 30, "name": "Volt Blaze", "category": "Basketball", "price": 170, "offerPrice": 145, "rating": 4.6, "defaultQuantity": 0, "image": "./shoe-images/shoe15.jpg", "size": "UK 9"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "_id": 1, "name": "Classic Black Sneakers", "category": "Casual", "price": 110, "offerPrice": 85, "rating": 4.4, "defaultQuantity": 0, "image": "./shoe-images/shoe1.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 2, "name": "Red & Black Trainers", "category": "Fitness", "price": 135, "offerPrice": 110, "rating": 4.6, "defaultQuantity": 0, "image": "./shoe-images/shoe2.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 3, "name": "Outdoor White Runners", "category": "Running", "price": 125, "offerPrice": 100, "rating": 4.7, "defaultQuantity": 0, "image": "./shoe-images/shoe3.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 4, "name": "Teal Urban Sneaks", "category": "Casual", "price": 95, "offerPrice": 75, "rating": 4.3, "defaultQuantity": 0, "image": "./shoe-images/shoe4.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 5, "name": "Green & Blue Asics", "category": "Running", "price": 140, "offerPrice": 115, "rating": 4.5, "defaultQuantity": 0, "image": "./shoe-images/shoe5.jpg", "size": "UK 9"
+  },
+  {
+    "_id": 6, "name": "White Classic Sneakers", "category": "Everyday", "price": 105, "offerPrice": 80, "rating": 4.2, "defaultQuantity": 0, "image": "./shoe-images/shoe6.jpg", "size": "UK 9"
+  }
+]
