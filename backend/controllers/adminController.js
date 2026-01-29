@@ -14,3 +14,17 @@ exports.getAllUser=async(req,res)=>{
     }
 }
 
+exports.deleteUser=async(req,res)=>{
+    try{
+        const id=req.params.id
+        const deletedUser=await User.findByIdAndDelete(id)
+        if(deletedUser){
+            return res.status(200).send({message:"User deleted successfully"})
+        }
+        return res.status(400).send({message:"Failed to delete the user"})
+    }
+    catch(e)
+    {
+        console.log("deleteUser error ->",e)
+    }
+}

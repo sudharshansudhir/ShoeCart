@@ -48,6 +48,34 @@ exports.addProduct=async(req,res)=>{
     }
 }
 
+exports.removeProduct=async(req,res)=>{
+    try{
+        const id=req.params.id
+        const deletedItem=await Product.findByIdAndDelete(id)
+        if(deletedItem){
+            return res.status(200).send({message:"Product Deleted Successfully"})
+        }
+        return res.status(400).send({message:"Error in deleting a product"})
+    }
+    catch(e){
+        console.log("removeProduct error ->",e)
+    }
+}
+
+exports.updateProduct=async(req,res)=>{
+    try{
+     const id=req.params.id
+     const updated=await Product.findByIdAndUpdate(id,{$set:req.body.payload},{new:true})
+     if(updated){
+        return res.status(200).send({message:"Product updated successfully"})
+     }
+     return res.status(400).send({message:"Product failed to update"})
+    }
+    catch(e){
+        console.log("updateProduct error ->",e)
+    }
+}
+
 exports.addToCart=async(req,res)=>{
     try{
         const id=req.params.id
