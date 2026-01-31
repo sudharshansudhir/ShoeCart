@@ -7,7 +7,7 @@ exports.getAllProducts=async(req,res)=>{
         if(!allProducts){
             return res.status(400).send({message:"No Products Found"})
         }
-        return res.status(400).send({message:"All products fetched successfully",allProducts})
+       return res.status(200).send({message:"All products fetched successfully",allProducts})
     }
     catch(e){
         console.log("getAllProducts error ->",e)
@@ -98,7 +98,7 @@ exports.addToCart=async(req,res)=>{
         }
         await getUser.save()
         console.log(getUser)
-        return res.status(200).send({message:"Item added to the cart successfully"})
+        return res.status(200).send({message:"Item added to the cart successfully",cart:getUser.cart})
     }
     catch(e){
         console.log("addToCart error ->",e)
@@ -127,7 +127,7 @@ exports.removeFromCart=async(req,res)=>{
         }
         await getUser.save()
         console.log(getUser)
-        return res.status(200).send({message:"Item removed from the cart successfully"})
+        return res.status(200).send({message:"Item removed from the cart successfully",cart:getUser.cart})
     }
     catch(e){
         console.log("removeFromCart error ->",e)

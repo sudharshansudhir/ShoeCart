@@ -9,7 +9,7 @@ exports.isAdmin=async(req,res,next)=>{
         }
         const value=token.split(" ")[1]
         if(!value){
-            return res.status(400).send({message:"Login as first"})
+            return res.status(400).send({message:"Login as Admin first"})
         }
         const verified=jwt.verify(value,process.env.ADMIN_SECRET_KEY)
         if(verified){            

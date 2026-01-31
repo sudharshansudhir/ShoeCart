@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from "/ShoeCart-logo.jpg"
 import {NavLink,Link} from "react-router-dom"
 import useNewCon from '../Context'
 
 const Navbar = () => {
-    const {Login,setLogin}=useNewCon()
+    // const {Login,setLogin}=useNewCon()
+    const [isLogin,setisLogin]=useState(false)
+    const isLoggedIn=localStorage.getItem("token")
+    
+    useEffect(()=>{
+      if(isLoggedIn){
+        setisLogin(true)
+    }  
+    },[isLogin])
+
+
   return (
     <div className='flex absolute w-full z-10 flex-row justify-between my-1 md:my-3'>
         <div className='shoecart-logo'>
@@ -31,14 +41,12 @@ const Navbar = () => {
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="m14.413 10.663-6.25 6.25a.939.939 0 1 1-1.328-1.328L12.42 10 6.836 4.413a.939.939 0 1 1 1.328-1.328l6.25 6.25a.94.94 0 0 1-.001 1.328" fill="#CBD5E1"/>
     </svg>
-    <NavLink className={({isActive})=>isActive?"text-yellow-500 text-xl md:text-2xl underline":'hover:underline'} to="/mycart">MyCart</NavLink>
+    <NavLink className={({isActive})=>isActive?"text-yellow-500 text-xl md:text-2xl underline":'hover:underline'} to="/cart">MyCart</NavLink>
 </div>
 </div>
         <div className='m-2'>
             {/* <a className='mx-2'><i className="fa-solid fa-heart hover:scale-120"></i></a> */}
-            {Login?(
-                <button onClick={()=>setLogin(false)} className='bg-yellow-500 p-2 border border-2  border-black rounded text-black font-bold hover:scale-105'>LOGIN</button>
-            ):(<button onClick={()=>setLogin(true)} className='bg-yellow-500 p-2 border border-2  border-black rounded text-black font-bold hover:scale-105'>LOGOUT</button>)}
+            {!isLogin? <NavLink to="/login" className='bg-yellow-500 p-2 border-2 mx-2 border-black rounded text-black font-bold hover:scale-105'>Login</NavLink>:<NavLink to="/profile" className='bg-yellow-500 p-2 border-2 mx-2 border-black rounded text-black font-bold hover:scale-105'>Profile</NavLink>}
             
         </div>
     </div>

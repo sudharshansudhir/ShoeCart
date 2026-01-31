@@ -6,12 +6,14 @@ exports.isUser=async(req,res,next)=>{
         if(!token){
             return res.status(400).send({message:"Please login to continue"})
         }
-        const value=token.split(" ")[1]
-        if(!value){
+        // const value=token.split(" ")[1]
+        // console.log(token)
+        if(!token){
             return res.status(400).send({message:"Login first"})
         }
-        req.logId=jwt.verify(value,process.env.SECRET_KEY)
+        req.logId=jwt.verify(token,process.env.SECRET_KEY)
         if(req.logId){            
+            // console.log("Yes,Logged in")
             next()
         }else{
             console.log("Invalid token")

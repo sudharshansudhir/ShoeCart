@@ -27,7 +27,7 @@ exports.register=async(req,res)=>{
 exports.login=async(req,res)=>{
     try{
         const {email,password}=req.body;
-        console.log(email,process.env.ADMIN_ID)
+        // console.log(email,process.env.ADMIN_ID)
         if(email!=process.env.ADMIN_ID){
         const isUserExist=await User.findOne({email})
         if(!isUserExist){
@@ -39,7 +39,7 @@ exports.login=async(req,res)=>{
         }
         const token=jwt.sign({id:isUserExist._id},process.env.SECRET_KEY,{expiresIn:"1d"})
         return res.status(200).send({message:"Login Successful",token})
-    }
+    } 
     else{
         if(email==process.env.ADMIN_ID && password==process.env.ADMIN_PASSWORD){
             const token=jwt.sign({id:process.env.ADMIN_ID},process.env.ADMIN_SECRET_KEY,{expiresIn:"1d"})

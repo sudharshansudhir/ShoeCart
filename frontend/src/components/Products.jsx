@@ -1,21 +1,49 @@
 import React, { useEffect, useState } from 'react'
 import whyus from "/WhyUs.png"
 import useNewCon from '../Context'
-import AllProducts from './AllProducts'
-
-
+// import AllProducts from './AllProducts'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+const API_BASE=import.meta.env.VITE_API_URI
 const Products = () => {
 
     const[allprods,setAllprods]=useState([])
     const[search,setsearch]=useState("")
     const[backup,setbackup]=useState([])
     const[no,setNo]=useState(false)
+    const [userCart,setUserCart]=useState()
     const {addtocart,Mycart}=useNewCon()
-
+    // const [qty,setqty]=useState(0)
+        const isLoggedIn=localStorage.getItem("token")
+const navigate=useNavigate()
     useEffect(()=>{
-        fetch("/AllProductsdata.json")
-        .then((data)=>data.json())
-        .then((data)=>{setAllprods(data),setbackup(data)})
+        async function fetchProducts(params) {
+            try{
+                // console.log(API_BASE)
+                
+                const res=await axios.get(`${API_BASE}/products/all`)
+                console.log(res.data.allProducts)
+                setAllprods(res.data.allProducts)
+                setbackup(res.data.allProducts)
+                const userProfile=await axios.get(`${API_BASE}/user/getuser`,{
+                    headers:{
+                        Authorization:localStorage.getItem("token")
+                    }
+                })
+                // console.log(userProfile.data.user.cart)
+                setUserCart(userProfile.data.user.cart)
+2
+        }
+        catch(e){
+            console.log(e)
+        }
+        }
+        
+        fetchProducts()
+
+    //     fetch("/AllProductsdata.json")
+    //     .then((data)=>data.json())
+    //     .then((data)=>{setAllprods(data),setbackup(data)})
     },[])
 
     function sortprice(){
@@ -36,40 +64,49 @@ const Products = () => {
     }
 
     function searched(value){    
-        const filtered=[...backup].filter((item)=>item.name.toLowerCase().includes(value.toLowerCase()))
+        const filtered=[...backup].filter((item)=>item.productName.toLowerCase().includes(value.toLowerCase()))
         setAllprods(filtered)        
     }
 
-    function increment(id){
-        const inc=allprods.map((prod)=>{
-            if(prod._id===id){
-                const up = {...prod,defaultQuantity:prod.defaultQuantity+1}
-                addtocart(up)
-                return up
-            }
-            else{
-                return prod
-            }
-        })
-        setAllprods(inc)
+    async function increment(id){
+         if(!isLoggedIn){
+            alert("Login required !")
+            navigate("/login")
+        }
+        try{
+            const incremented=await axios.post(`${API_BASE}/products/add/cart/${id}`,{},{
+                headers:{
+                    Authorization:localStorage.getItem("token")
+                }
+            })
+            console.log(incremented)
+            setUserCart(incremented.data.cart)
+        }
+        catch(e){
+            console.log("Increment in cart error",e)
+        }
+
     }
 
-    function decrement(id){
-        const dec=allprods.map((prod)=>{
-            if(prod._id===id){
-                return {...prod,defaultQuantity:prod.defaultQuantity-1}
-            }
-            else{
-                return prod
-            }
-        })
-        setAllprods(dec)
-        
+    async function decrement(id){
+         try{
+            const decremented=await axios.post(`${API_BASE}/products/remove/cart/${id}`,{},{
+                headers:{
+                    Authorization:localStorage.getItem("token")
+                }
+            })
+            console.log(decremented)
+            
+            setUserCart(decremented.data.cart)
+        }
+        catch(e){
+            console.log("Decrement in cart error",e)
+        }        
     }
 
 
   return (
-    <div className='my-16 bg-cover pb-8 my-16' style={{backgroundImage:`url(${whyus})`}} id='allprod'>
+    <div className='my-16 bg-cover pb-8 ' style={{backgroundImage:`url(${whyus})`}} id='allprod'>
         <div className='flex items-center my-16 justify-center'>
             <h1 className='text-3xl md:text-7xl'>All Products</h1>
         </div>
@@ -93,17 +130,20 @@ const Products = () => {
         </div>
     {allprods.length!=0 ?
         (<div className='flex my-16 flex-wrap gap-x-[80px] gap-y-[20px] mx-24 justify-center md:justify-start'>
-            { allprods.map((product,index)=>{return <div className='hover:scale-105' key={index}>
+            { allprods.map((product,index)=>{
+                const qty=userCart?.find((c)=>c.productId==product._id)?.quantity || 0
+                // setqty(qtys)
+                return <div className='hover:scale-105' key={index}>
         <div className="border border-yellow-600 text-yellow-400 rounded-md md:px-4 px-3 py-2 bg-black w-100 min-h-80 max-h-80 md:min-w-60 md:max-w-60 ">
             <div className="group cursor-pointer bg-yellow-100 flex rounded-md items-center justify-center px-2">
-                <img className="transition w-full min-h-36 max-h-46" src={product.image} alt={product.name} />
+                <img className="transition w-full min-h-36 max-h-46" src={product.image} alt={product.productName} />
             </div>
             <div className=" text-sm">
-                <p>{product.category}</p>
-                <p className=" font-medium text-lg truncate w-full">{product.name}</p>
+                <p>{product.modelNo}</p>
+                <p className=" font-medium text-lg truncate w-full">{product.productName}</p>
                 <div className="flex items-center gap-0.5">
                     {Array(5).fill('').map((_, i) => (
-                        product.rating > i ? (
+                        product.ratings > i ? (
                             <svg width="14" height="13" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.049.927c.3-.921 1.603-.921 1.902 0l1.294 3.983a1 1 0 0 0 .951.69h4.188c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 0 0-.364 1.118l1.295 3.983c.299.921-.756 1.688-1.54 1.118L9.589 13.63a1 1 0 0 0-1.176 0l-3.389 2.46c-.783.57-1.838-.197-1.539-1.118L4.78 10.99a1 1 0 0 0-.363-1.118L1.028 7.41c-.783-.57-.38-1.81.588-1.81h4.188a1 1 0 0 0 .95-.69z" fill="currentColor" />
                             </svg>
@@ -113,15 +153,15 @@ const Products = () => {
                             </svg>
                         )
                     ))}
-                    <p>({product.rating})</p>
+                    <p>({product.ratings})</p>
                 </div>
 
                 <div className="flex items-end justify-between mt-3">
                     <p className="md:text-xl text-base font-medium ">
-                        ${product.offerPrice} <span className=" md:text-sm text-xs line-through">${product.price}</span>
+                        ${product.price} <span className=" md:text-sm text-xs line-through">${product.price}</span>
                     </p>
                     <div className="font-bold">
-                        {product.defaultQuantity === 0 ? (
+                        {qty === 0 ? (
                             <button  className="flex items-center justify-center gap-1 bg-yellow-200 border border-black md:w-[80px] w-[64px] h-[34px] rounded text-black" onClick={() =>  {increment(product._id);}} >
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M.583.583h2.333l1.564 7.81a1.17 1.17 0 0 0 1.166.94h5.67a1.17 1.17 0 0 0 1.167-.94l.933-4.893H3.5m2.333 8.75a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0m6.417 0a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0" />
@@ -133,7 +173,7 @@ const Products = () => {
                                 <button onClick={() =>decrement(product._id) } className="cursor-pointer text-black text-md px-2 h-full" >
                                     -
                                 </button>
-                                <span className="w-5 text-black font-bold text-center">{product.defaultQuantity}</span>
+                                <span className="w-5 text-black font-bold text-center">{qty}</span>
                                 <button onClick={() => {increment(product._id);addtocart(product)}} className="cursor-pointer text-black text-md px-2 h-full" >
                                     +
                                 </button>

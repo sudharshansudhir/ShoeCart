@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import whyus from "/WhyUs.png"
 import useNewCon from '../Context'
-import Navbar from '../Home/Navbar'
+import Navbar from './Navbar'
 
 const NextPage = () => {
     const [showAddress, setShowAddress] = React.useState(false)

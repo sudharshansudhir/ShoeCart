@@ -14,4 +14,4 @@ router.post("/add",isAdmin,addProduct)
 router.patch("/update/:id",isAdmin,updateProduct)
 router.delete("/delete/:id",isAdmin,removeProduct)
 
-module.exports=router
+module.exports=router 
