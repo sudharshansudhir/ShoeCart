@@ -9,7 +9,8 @@ const Login = () => {
         name: '',
         email: '',
         phone:"",
-        password: ''
+        password: '',
+        address:"",
     })
 
     async function handleSubmit(e){
@@ -54,11 +55,17 @@ const Login = () => {
                     <input type="text" name="name" placeholder="Name" className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none " value={formData.name} onChange={handleChange} required />
                     
                 </div>
-                <div className="flex items-center mt-6 w-full bg-gray-800 border border-gray-700 h-12 rounded-full overflow-hidden pl-6 gap-2 ">
+                <div className="flex items-center mt-4 w-full bg-gray-800 border border-gray-700 h-12 rounded-full overflow-hidden pl-6 gap-2 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-gray-400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"> <circle cx="12" cy="8" r="5" /> <path d="M20 21a8 8 0 0 0-16 0" /> </svg>
-                    <input type="text" name="phone" placeholder="phone" className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none " value={formData.phone} onChange={handleChange} required />
+                    <input type="text" name="phone" placeholder="Phone Number" className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none " value={formData.phone} onChange={handleChange} required />
                     
-                </div></>
+                </div>
+                <div className="flex items-center mt-4 w-full bg-gray-800 border border-gray-700 h-12 rounded-full overflow-hidden pl-6 gap-2 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-gray-400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"> <circle cx="12" cy="8" r="5" /> <path d="M20 21a8 8 0 0 0-16 0" /> </svg>
+                    <input type="text" name="Address" placeholder="Address" className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none " value={formData.address} onChange={handleChange} required />
+                    
+                </div>
+                </>
             )}
 
             <div className="flex items-center w-full mt-4 bg-gray-800 border border-gray-700 h-12 rounded-full overflow-hidden pl-6 gap-2 ">

@@ -21,6 +21,7 @@ exports.updateUser=async(req,res)=>{
         const id=req.logId.id
         const updatedUser=await User.findByIdAndUpdate(id,{$set:req.body.payload},{new:true})
         if(updatedUser){
+            updatedUser.save()
             return res.status(200).send({message:"User updated successfully"})
         }
         return res.status(400).send({message:"Failed to update the user"})

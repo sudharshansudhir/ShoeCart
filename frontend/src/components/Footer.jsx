@@ -4,7 +4,7 @@ import whyus from "/WhyUs.png"
 
 const Footer = () => {
   return (
-    <div className='bg-cover' style={{backgroundImage:`url(${whyus})`}}>
+    <div className='bg-cover border-t-1 border-amber-300/20 pt-8'  style={{backgroundImage:`url(${whyus})`}}>
         <footer className="px-6 pt-4 mt-2 w-full text-gray-300">
             <div className="flex flex-col md:flex-row justify-between w-full gap-10 border-b border-gray-500 pb-10">
                 <div className="md:max-w-96">

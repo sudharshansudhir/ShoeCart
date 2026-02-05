@@ -4,6 +4,6 @@ const { isUser } = require('../middleware/isUser')
 const router=express.Router()
 
 router.get("/getuser",isUser,getOneUser)
-router.patch("/update/:id",isUser,updateUser)
+router.patch("/update",isUser,updateUser)
 
 module.exports=router
