@@ -9,7 +9,7 @@ import Footer from '../components/Footer'
 const AllProducts = () => {
   return (
     <div className='relative mx-3'>
-        {/* <Navbar/> */}
+        <Navbar/>
         <HeroAP/>
         <Products/>
         <Review/>

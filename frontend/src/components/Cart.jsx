@@ -54,10 +54,44 @@ const Cart = () => {
       const clr=Mycart.filter((item)=>item._id!=id)
       setMycart(clr)
     }
+    async function decrement(id){
+         try{
+            const decremented=await axios.post(`${API_BASE}/products/remove/cart/${id}`,{},{
+                headers:{
+                    Authorization:localStorage.getItem("token")
+                }
+            })
+            console.log(decremented)
+            
+            setUserscart(decremented.data.cart)
+        }
+        catch(e){
+            console.log("Decrement in cart error",e)
+        }        
+    }
+    async function increment(id){
+         try{
+            const incremented=await axios.post(`${API_BASE}/products/add/cart/${id}`,{},{
+                headers:{
+                    Authorization:localStorage.getItem("token")
+                }
+            })
+            console.log(incremented)
+            
+            setUserscart(incremented.data.cart)
+        }
+        catch(e){
+            console.log("increment in cart error",e)
+        }        
+    }
 
     function setadd(){
       setAddress(addrs)
     }
+function order(){
+    alert("Order Successfully placed")
+}
+
     return (
       <div className='bg-cover pb-6 md:pb-8 mb-8 md:mb-16' style={{backgroundImage:`url(${whyus})`}}>
       {/* <Navbar/> */}
@@ -93,11 +127,13 @@ const Cart = () => {
                             </div>
                         </div>
                         <p className="text-center">${product.price*qty}</p>
-                        <button className="cursor-pointer mx-auto" onClick={()=>{cleared(product._id)}}>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="m12.5 7.5-5 5m0-5 5 5m5.833-2.5a8.333 8.333 0 1 1-16.667 0 8.333 8.333 0 0 1 16.667 0" stroke="#FF532E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                        <div className='flex justify-center items-center'>
+                        <button className="cursor-pointer scale-110 mx-auto" onClick={()=>{decrement(product._id)}}>
+                            ➖
                         </button>
+                        <button className="cursor-pointer scale-110 mx-auto" onClick={()=>{increment(product._id)}}>
+                            ➕
+                        </button></div>
                     </div>}
                 )):<div>Your Cart is empty</div>}
                 
@@ -158,7 +194,7 @@ const Cart = () => {
                     </p>
                 </div>
 
-                <button className="w-full py-3 mt-6 cursor-pointer bg-yellow-500 text-white font-medium hover:bg-yellow-600 transition">
+                <button onClick={()=>order()} className="w-full py-3 mt-6 cursor-pointer bg-yellow-500 text-white font-medium hover:bg-yellow-600 transition">
                     Place Order
                 </button>
             </div>

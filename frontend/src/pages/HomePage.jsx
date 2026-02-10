@@ -10,7 +10,7 @@ import HomeProducts from '../components/HomeProducts'
 const HomePage = () => {
   return (
     <div className='relative mx-3'>
-      {/* <Navbar/> */}
+      <Navbar/>
       <Hero/>
       <HomeProducts/>
       <Testimonial/>

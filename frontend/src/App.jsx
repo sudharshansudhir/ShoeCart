@@ -12,7 +12,7 @@ import Footer from './components/Footer.jsx'
 const App = () => {
   return (
     <>
-    <Navbar/>
+    {/* <Navbar/> */}
     <Routes>
       <Route path='/' Component={HomePage}/>
       <Route path='/products' Component={AllProducts}/>

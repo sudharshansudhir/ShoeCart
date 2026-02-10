@@ -2,13 +2,20 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const API_BASE=import.meta.env.VITE_API_URI
 
 const ProfileSection = () => {
     const [profile,setProfile]=useState()
+    const navigate=useNavigate()
     const [updateProfile,setUpdateProfile]=useState()
     const [isUpdate,setIsUpdate]=useState(false)
     useEffect(()=>{
+        const token=localStorage.getItem("token")
+        if (!token){
+            navigate("/login")
+        }
+
         async function fetchProfile() {
             try{
                 const response=await axios.get(`${API_BASE}/user/getuser`,{
@@ -46,6 +53,12 @@ const ProfileSection = () => {
         }
         
         
+    }
+
+    async function logoutFunction() {
+        alert("Logged out successfully")
+        localStorage.clear()        
+        navigate("/login")
     }
 
   return (
@@ -92,9 +105,14 @@ const ProfileSection = () => {
                                         defaultValue={updateProfile.address} onChange={isUpdate?(e)=>updateProfile.address=e.target.value:undefined} disabled={!isUpdate} placeholder="Address" />
                             </div>
                         </div>
-                            <div className="w-full rounded-lg bg-blue-500 mt-4 text-white text-lg font-semibold">
-                                { isUpdate ? <button onClick={(e)=>{updateData(e);setIsUpdate(!isUpdate)}} className="w-full p-4">Submit</button>:
-                                <button onClick={(e)=>{e.preventDefault();setIsUpdate(!isUpdate)}} className="w-full p-4">Edit</button>}
+                        <div className='flex gap-2 justify-center items-around'>
+                            <div className="w-full flex justify-center items-center rounded-lg mt-4 text-white text-lg font-semibold">
+                                { isUpdate ? <button onClick={(e)=>{updateData(e);setIsUpdate(!isUpdate)}} className="w-[50%]  bg-green-500 p-4">Submit</button>:
+                                <button onClick={(e)=>{e.preventDefault();setIsUpdate(!isUpdate)}} className="w-[50%]  bg-yellow-500 p-4">Edit</button>}
+                            </div>
+                            <div className="w-full flex justify-center items-center rounded-lg mt-4 text-white text-lg font-semibold">
+                                <button onClick={()=>logoutFunction()} className='w-[50%]  bg-red-500 p-4'>Logout</button>
+                            </div>
                             </div>
                         </div>
                     </> : <div className='flex w-full py-8 h-full justify-center items-center text-4xl'>Loading...</div>}

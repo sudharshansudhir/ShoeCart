@@ -15,17 +15,18 @@ const Login = () => {
 
     async function handleSubmit(e){
         e.preventDefault()
-        console.log(state)
+        // console.log(state)
         if(state=="register"){
         const res=await axios.post(`${API_BASE}/auth/register`,formData)
         localStorage.setItem("token",res.data.token)
+        alert("user registered Successfully")
         navigate("/")
         console.log(res)
         }
         else{
-            console.log("login")
+            // console.log("login")
             const res=await axios.post(`${API_BASE}/auth/login`,formData)
-            console.log(res)
+            // console.log(res)
             localStorage.setItem("token",res.data.token)
             navigate("/")
             
@@ -62,7 +63,7 @@ const Login = () => {
                 </div>
                 <div className="flex items-center mt-4 w-full bg-gray-800 border border-gray-700 h-12 rounded-full overflow-hidden pl-6 gap-2 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-gray-400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"> <circle cx="12" cy="8" r="5" /> <path d="M20 21a8 8 0 0 0-16 0" /> </svg>
-                    <input type="text" name="Address" placeholder="Address" className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none " value={formData.address} onChange={handleChange} required />
+                    <input type="text" name="address" placeholder="Address" className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none " value={formData.address} onChange={handleChange} required />
                     
                 </div>
                 </>
