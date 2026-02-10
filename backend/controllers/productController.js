@@ -65,7 +65,8 @@ exports.removeProduct=async(req,res)=>{
 exports.updateProduct=async(req,res)=>{
     try{
      const id=req.params.id
-     const updated=await Product.findByIdAndUpdate(id,{$set:req.body.payload},{new:true})
+     console.log(req)
+     const updated=await Product.findByIdAndUpdate(id,{$set:req.body},{new:true})
      if(updated){
         return res.status(200).send({message:"Product updated successfully"})
      }

@@ -3,15 +3,15 @@ const jwt=require('jsonwebtoken')
 exports.isAdmin=async(req,res,next)=>{
     try{
         const token=req.headers.authorization
-        const isAdmin=req.headers.isadmin.split(" ")[1]
+        const isAdmin=req.headers.isadmin
         if(!token || !isAdmin ){
             return res.status(400).send({message:"Please login as Admin to continue"})
         }
-        const value=token.split(" ")[1]
-        if(!value){
+        // const value=token.split(" ")[1]
+        if(!token){
             return res.status(400).send({message:"Login as Admin first"})
         }
-        const verified=jwt.verify(value,process.env.ADMIN_SECRET_KEY)
+        const verified=jwt.verify(token,process.env.ADMIN_SECRET_KEY)
         if(verified){            
             next()
         }else{

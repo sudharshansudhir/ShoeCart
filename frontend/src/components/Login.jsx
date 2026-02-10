@@ -20,13 +20,20 @@ const Login = () => {
         const res=await axios.post(`${API_BASE}/auth/register`,formData)
         localStorage.setItem("token",res.data.token)
         alert("user registered Successfully")
+
         navigate("/")
         console.log(res)
         }
         else{
             // console.log("login")
             const res=await axios.post(`${API_BASE}/auth/login`,formData)
-            // console.log(res)
+
+            console.log(res)
+            if(res.data.isAdmin){
+                localStorage.setItem("isAdmin",res.data.isAdmin)
+                localStorage.setItem("token",res.data.token)
+                navigate("/admin")
+            }
             localStorage.setItem("token",res.data.token)
             navigate("/")
             
@@ -71,7 +78,7 @@ const Login = () => {
 
             <div className="flex items-center w-full mt-4 bg-gray-800 border border-gray-700 h-12 rounded-full overflow-hidden pl-6 gap-2 ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-gray-400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"> <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /> </svg>
-                <input type="email" name="email" placeholder="Email id" className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none " value={formData.email} onChange={handleChange} required />
+                <input type="text" name="email" placeholder="Email id" className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none " value={formData.email} onChange={handleChange} required />
             </div>
 
             <div className=" flex items-center mt-4 w-full bg-gray-800 border border-gray-700 h-12 rounded-full overflow-hidden pl-6 gap-2 ">

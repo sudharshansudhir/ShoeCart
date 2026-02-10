@@ -9,7 +9,7 @@ router.get("/:id",getOneProduct)
 
 router.post("/add/cart/:id",isUser,addToCart)
 router.post("/remove/cart/:id",isUser,removeFromCart)
-
+// isAdmin
 router.post("/add",isAdmin,addProduct)
 router.patch("/update/:id",isAdmin,updateProduct)
 router.delete("/delete/:id",isAdmin,removeProduct)

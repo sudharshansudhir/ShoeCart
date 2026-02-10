@@ -8,6 +8,7 @@ import CartPage from './pages/CartPage.jsx'
 import ProfilePage from './pages/ProfilePage.jsx'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
+import AdminDashboard from './pages/AdminDashboard.jsx'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Route path='/login' Component={LoginPage}/>
       <Route path='/cart' Component={CartPage}/>
       <Route path='/profile' Component={ProfilePage}/>
+      <Route path='/admin' Component={AdminDashboard}/>
     </Routes>
     <Footer/>
     </>
