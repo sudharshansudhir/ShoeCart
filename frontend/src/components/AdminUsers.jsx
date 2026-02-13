@@ -33,7 +33,7 @@ const AdminUsers = () => {
 
   return (
     <div>
-        <h2 className='text-3xl my-4'>All Users</h2>
+        <h2 className='md:text-3xl text-[20px] mx-4 my-4'>All Users</h2>
         <div className="flex flex-wrap gap-3 p-6">
   {users ? (
     users.map((item) => (

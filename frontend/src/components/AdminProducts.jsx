@@ -40,8 +40,8 @@ const AdminProducts = () => {
   return (
     <div>
         <div className='flex justify-between mx-4 items-center'>
-        <h2 className='text-3xl my-4 '>All Products</h2>
-        <button onClick={()=>{setSelectedProduct(null);setShowForm(true)}} className='py-2 px-4 text-[20px] text-yellow-400 bg-black border-2 hover:scale-105 duration-300  hover:bg-yellow-400 hover:text-black rounded-md border-amber-300'>New Product</button>
+        <h2 className='md:text-3xl text-[20px] my-4 '>All Products</h2>
+        <button onClick={()=>{setSelectedProduct(null);setShowForm(true)}} className='md:my-2 md:px-4 px-2 py-1 md:text-[20px] text-yellow-400 bg-black border-2 hover:scale-105 duration-300  hover:bg-yellow-400 hover:text-black rounded-md border-amber-300'>New Product</button>
         </div>
 {showForm && (
   <AddProductForm
@@ -52,23 +52,23 @@ const AdminProducts = () => {
 )}
 
 
-        <div className="flex flex-wrap items-center gap-6">
+        <div className="flex flex-wrap m-2 items-center gap-6">
   {products ? products.map((item) => (
     <div
       key={item._id}
-      className="group w-[380px] overflow-hidden rounded-2xl border border-yellow-500/20 bg-[#0b0b0b] shadow-lg transition hover:shadow-yellow-500/20"
+      className="group md:w-[380px] w-[300px] overflow-hidden rounded-2xl border border-yellow-500/20 bg-[#0b0b0b] shadow-lg transition hover:shadow-yellow-500/20"
     >
       {/* Image */}
       <div className="overflow-hidden">
         <img
           src={item.image}
           alt={item.productName}
-          className="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
+          className="md:h-64 h-52 w-full object-cover transition duration-500 group-hover:scale-105"
         />
       </div>
 
       {/* Content */}
-      <div className="relative p-6">
+      <div className="relative md:p-6 p-3">
         {/* Remove badge */}
         <button onClick={()=>deleteProduct(item._id)} className="absolute right-4 top-4 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-3 py-1 text-xs font-semibold text-yellow-400 cursor-pointer hover:bg-yellow-400 hover:text-black transition">
           Delete

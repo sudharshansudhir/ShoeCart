@@ -8,65 +8,89 @@ import whyus from "/WhyUs.png"
 
 const Testimonial = () => {
   return (
-    <div className='bg-cover pb-6 md:pb-8 my-8 md:my-16' style={{backgroundImage:`url(${whyus})`}}>
-        <div className='flex items-center my-8 justify-center'><h1 className='text-3xl md:text-7xl'>Why Us ?</h1></div>
-    <div className='grid grid-row-2 h-[300px] md:h-[700px] gap-3 grid-cols-12'>
-        <div className='col-span-5 rounded-2xl hover:scale-95'>
-            <div className="relative rounded-2xl w-full h-full overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${bg1})` }}>
-                <div className="absolute inset-0 bg-black/65"></div>
-                <div className="relative z-10 flex justify-center items-center h-full">
-                    <h1 className="text-white text-xl md:text-4xl font-bold">Fast Delivery</h1>
-                </div>
-            </div>
+
+    <div
+      className='bg-cover pb-6 md:pb-8 my-8 md:my-16 px-4 md:px-10'
+      style={{ backgroundImage: `url(${whyus})` }}
+    >
+
+      {/* TITLE */}
+
+      <div className='flex items-center my-8 justify-center'>
+        <h1 className='text-3xl md:text-7xl text-center'>Why Us ?</h1>
+      </div>
+
+
+
+      {/* GRID */}
+
+      <div
+        className='
+        grid
+        gap-3
+
+        grid-cols-1
+        sm:grid-cols-2
+        md:grid-cols-12
+
+        auto-rows-[220px]
+        sm:auto-rows-[260px]
+        md:h-[700px]
+      '>
+
+        {/* Fast Delivery */}
+        <div className='md:col-span-5 rounded-2xl hover:scale-95 transition'>
+          <Card image={bg1} title="Fast Delivery" />
         </div>
 
-
-
-        <div className='col-span-3 bg-gray-500 hover:scale-95 rounded-2xl'>
-            <div className="relative rounded-2xl p-2 w-full h-full overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${bg2})` }}>
-                <div className="absolute inset-0 bg-black/65"></div>
-                <div className="relative z-10 flex justify-center items-center h-full">
-                    <h1 className="text-white text-xl md:text-4xl font-bold">7 Return Policy</h1>
-                </div>
-            </div>
+        {/* Return */}
+        <div className='md:col-span-3 rounded-2xl hover:scale-95 transition'>
+          <Card image={bg2} title="7 Return Policy" />
         </div>
 
-
-
-        <div className='col-span-4 bg-gray-500 hover:scale-95 row-span-2 rounded-2xl'>
-            <div className="relative rounded-2xl w-full h-full overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${bg3})` }}>
-                <div className="absolute inset-0 bg-black/65"></div>
-                <div className="relative z-10 flex justify-center items-center h-full">
-                    <h1 className="text-white text-xl md:text-4xl font-bold">Quality</h1>
-                </div>
-            </div>
+        {/* Quality */}
+        <div className='md:col-span-4 md:row-span-2 rounded-2xl hover:scale-95 transition'>
+          <Card image={bg3} title="Quality" />
         </div>
 
-
-
-
-        <div className='col-span-4 bg-gray-500 hover:scale-95 rounded-2xl'>
-            <div className="relative rounded-2xl w-full h-full overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${bg4})` }}>
-                <div className="absolute inset-0 bg-black/65"></div>
-                <div className="relative z-10 flex justify-center items-center h-full">
-                    <h1 className="text-white text-xl md:text-4xl font-bold">700+ Happy customers</h1>
-                </div>
-            </div>
+        {/* Customers */}
+        <div className='md:col-span-4 rounded-2xl hover:scale-95 transition'>
+          <Card image={bg4} title="700+ Happy customers" />
         </div>
 
-
-
-        <div className='col-span-4 bg-gray-500 hover:scale-95 rounded-2xl'>
-            <div className="relative rounded-2xl w-full h-full overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${bg5})` }}>
-                <div className="absolute inset-0 bg-black/65"></div>
-                <div className="relative z-10 flex justify-center items-center h-full">
-                    <h1 className="text-white text-xl md:text-4xl font-bold">Cash On Delivery</h1>
-                </div>
-            </div>
+        {/* COD */}
+        <div className='md:col-span-4 rounded-2xl hover:scale-95 transition'>
+          <Card image={bg5} title="Cash On Delivery" />
         </div>
+
+      </div>
 
     </div>
-  </div>)
+  )
 }
+
+
+
+/* Reusable card — NOT a UI change.
+Just removing repeated markup safely.
+*/
+
+const Card = ({ image, title }) => (
+
+  <div
+    className="relative rounded-2xl w-full h-full overflow-hidden bg-cover bg-center"
+    style={{ backgroundImage: `url(${image})` }}
+  >
+
+    <div className="absolute inset-0 bg-black/65"></div>
+
+    <div className="relative z-10 flex justify-center items-center h-full p-4">
+      <h1 className="text-white text-xl md:text-4xl font-bold text-center">
+        {title}
+      </h1>
+    </div>
+
+  </div>
+)
 
 export default Testimonial

@@ -83,29 +83,29 @@ const AddProductForm = ({ closeForm, refresh, productData }) => {
 
   return (
 
-    <div className="fixed inset-0 z-50 bg-black/70 flex justify-center items-center">
+    <div className="fixed m-4 inset-0 z-50 bg-black/70 flex justify-center items-center">
 
       <form
         onSubmit={handleSubmit}
-        className="bg-[#111] p-8 rounded-xl w-[500px] space-y-4">
+        className="bg-[#111] md:p-8 p-4 rounded-xl md:w-[500px] w-[400px] md:space-y-4 space-y-3">
 
-        <h2 className="text-2xl text-yellow-400 font-bold">
+        <h2 className="md:text-2xl text-[20px] text-yellow-400 font-bold">
           {isEdit ? "Edit Product" : "Add Product"}
         </h2>
 
-        <input name="productName" value={formData.productName} onChange={handleChange} placeholder="Product Name" className="w-full p-3 rounded bg-black border" />
+        <input name="productName" value={formData.productName} onChange={handleChange} placeholder="Product Name" className="w-full md:p-3 p-2 rounded bg-black border" />
 
-        <input name="price" value={formData.price} onChange={handleChange} placeholder="Price" className="w-full p-3 rounded bg-black border" />
+        <input name="price" value={formData.price} onChange={handleChange} placeholder="Price" className="w-full md:p-3 p-2 rounded bg-black border" />
 
-        <input name="image" value={formData.image} onChange={handleChange} placeholder="Image URL" className="w-full p-3 rounded bg-black border" />
+        <input name="image" value={formData.image} onChange={handleChange} placeholder="Image URL" className="w-full md:p-3 p-2 rounded bg-black border" />
 
-        <input name="brand" value={formData.brand} onChange={handleChange} placeholder="Brand" className="w-full p-3 rounded bg-black border" />
+        <input name="brand" value={formData.brand} onChange={handleChange} placeholder="Brand" className="w-full md:p-3 p-2 rounded bg-black border" />
 
-        <input name="color" value={formData.color} onChange={handleChange} placeholder="Color" className="w-full p-3 rounded bg-black border" />
+        <input name="color" value={formData.color} onChange={handleChange} placeholder="Color" className="w-full md:p-3 p-2 rounded bg-black border" />
 
-        <input name="material" value={formData.material} onChange={handleChange} placeholder="Material" className="w-full p-3 rounded bg-black border" />
+        <input name="material" value={formData.material} onChange={handleChange} placeholder="Material" className="w-full md:p-3 p-2 rounded bg-black border" />
 
-        <input name="modelNo" value={formData.modelNo} onChange={handleChange} placeholder="Model No" className="w-full p-3 rounded bg-black border" />
+        <input name="modelNo" value={formData.modelNo} onChange={handleChange} placeholder="Model No" className="w-full md:p-3 p-2 rounded bg-black border" />
 
         <button className="w-full bg-yellow-400 text-black py-3 rounded font-bold hover:scale-105 transition">
           {isEdit ? "Update Product" : "Add Product"}
